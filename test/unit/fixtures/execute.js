@@ -1,0 +1,1 @@
+document.write('<script type="text/javascript" src="../fixtures/_common.js"><\/script>');
