@@ -86,5 +86,14 @@ Test.context("Execute", {
     command.execute(domain, mods);
     $('id1').value.shouldEqual('uoHE5TJuvq'); // master: password, domain: foo.com, length: 10
     $('id2').value.shouldEqual('uoHE5TJuvq'); // master: password, domain: foo.com, length: 10
+  },
+
+  'should not change hidden password fields': function() {
+    addPasswordInput('id1', 'password');
+    addPasswordInput('id2', 'password');
+    $('id2').hide();
+    command.execute(domain, mods);
+    $('id1').value.shouldEqual('uoHE5TJuvq'); // master: password, domain: foo.com, length: 10
+    $('id2').value.shouldEqual('password');
   }
 });
