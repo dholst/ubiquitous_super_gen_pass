@@ -79,5 +79,16 @@ Test.context("Preview", {
     $('preview').innerHTML.shouldEqual(
       '<span style="color: rgb(255, 255, 85); font-family: Helvetica;">Replace <strong>1</strong> password with a <strong>10</strong> digit SuperGenPass(word) for <strong>darrinholst.com</strong>.</span>'
     );
-  }  
+  },
+  
+  'should ignore hidden password fields': function() {
+    addPasswordInput('id1', 'password');
+    addPasswordInput('id2', 'foo');
+    $('id2').hide();
+    command.preview($('preview'), domain, mods);
+
+    $('preview').innerHTML.shouldEqual(
+      '<span style="color: rgb(255, 255, 85); font-family: Helvetica;">Replace <strong>1</strong> password with a <strong>10</strong> digit SuperGenPass(word) for <strong>foo.com</strong>.</span>'
+    );  
+  }
 });
