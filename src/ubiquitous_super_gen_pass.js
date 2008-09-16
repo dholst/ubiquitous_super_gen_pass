@@ -231,7 +231,7 @@
 
     for(var i = 0, j = passwordFields.length; i < j; ++i) {
       var password = jQuery.trim(passwordFields[i].value);
-      if(jQuery.trim(passwordFields[i].value).length > 0) {
+      if(jQuery.trim(passwordFields[i].value).length > 0 && passwordFields[i].style.display != 'none') {
         passwordFieldsToChange.push(passwordFields[i]);
       }
     }
